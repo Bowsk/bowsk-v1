@@ -1,6 +1,6 @@
 #!/bin/bash
 
-branch=pheonix
+branch=master
 
 
 #Reboot the machine to auto log in to the karoshi user.
@@ -80,14 +80,14 @@ apt-get install -y feh ubiquity-frontend-gtk
 apt-get install -y xinit
 
 #Create karoshi user
-getent passwd karoshi 1>/dev/null
-	echo -e "Creating karoshi user\n"
+getent passwd bowsk 1>/dev/null
+	echo -e "Creating bowsk user\n"
 	sleep 1
-	useradd -d /opt/karoshi-admin -s /bin/bash -m karoshi
+	useradd -d /opt/bowsk-user -s /bin/bash -m bowsk
 	#Set password to karoshi
-	echo -e "\nSetting karoshi user password to karoshi\n"
+	echo -e "\nSetting bowsk user password to karoshi\n"
 	sleep 1
-	echo -e "karoshi\nkaroshi\n" | passwd karoshi
+	echo -e "karoshi\nkaroshi\n" | passwd bowsk
 
 	#Extract karoshi home area
 	echo -e "\nExtracting karoshi home area folder\n"
