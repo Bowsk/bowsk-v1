@@ -109,7 +109,7 @@ apt-get install --yes wget
 
 
 apt-get update
-#Install and configure Karoshi
+#Install and configure bowsk
 chmod 0755 /opt/bowsk/bowsk-setup/buildbowsk/buildbowsk
 echo "Running buildclient"
 sleep 4

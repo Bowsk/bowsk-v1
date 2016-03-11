@@ -27,7 +27,7 @@ esac
 BOWSKVER=bowsk-v1
 BOWSKVER=$BOWSKVER-$ARCH
 BOWSKVERNOCAPS=`echo $BOWSKVER | tr 'A-Z' 'a-z'`
-BUILDPATH=/home/karoshi-client/$BOWSKVERNOCAPS
+BUILDPATH=/home/bowsk-os/$BOWSKVERNOCAPS
 RELEASE=xenial
 BRANCH=bowsk
 ZIPFILE=$BRANCH.zip
@@ -98,12 +98,12 @@ echo -e "\nDownload $ZIPFILE\n"
 sleep 1
 if [ -d chroot/opt/karoshi ]
 then
-	echo -e "$BUILDPATH/chroot/opt/bowsk/bowsk-v1 exits\n\n1: Delete this folder and download the latest version\n2: Skip this step\n"
+	echo -e "$BUILDPATH/chroot/opt/karoshi/karoshi-client exits\n\n1: Delete this folder and download the latest version\n2: Skip this step\n"
 	read choice
 	case $choice in
 		1)
 		getclientsetup=yes
-		rm -f -R chroot/opt/bowsk
+		rm -f -R chroot/opt/karoshi
 		;;
 		2)
 		getclientsetup=no
@@ -113,6 +113,36 @@ else
 	getclientsetup=yes
 fi
 
+#Download master.zip and extract to chroot
+
+if [ $getclientsetup = yes ]
+then
+	[ -f /tmp/$ZIPFILE ] && rm -f /tmp/$ZIPFILE
+	cd /tmp
+	echo -e "\nDownloading $ZIPFILE from github.\n"
+	sleep 1
+	wget https://github.com/Bowsk/bowsk-v1/archive/$BRANCH.zip
+	if [ $? != 0 ]
+	then
+		echo -e "There was a problem downloading $ZIPFILE - exiting now."
+		exit
+	fi
+
+	echo -e "Unziping $ZIPFILE to $BUILDPATH/chroot/opt/karoshi\n"
+	sleep 1
+	mkdir -p $BUILDPATH/chroot/opt/bowsk/
+	unzip $ZIPFILE  -d $BUILDPATH/chroot/opt/bowsk
+	if [ $? != 0 ]
+	then
+		echo -e "There was a problem unziping $ZIPFILE - exiting now."
+		exit
+	fi
+	mv $BUILDPATH/chroot/opt/bowsk/bowsk-v1-$BRANCH/* $BUILDPATH/chroot/opt/bowsk
+	rm -r $BUILDPATH/chroot/opt/bowsk/bowsk-v1-$BRANCH
+	cd $BUILDPATH
+fi
+
+
 
 #Mount dev folder
 
@@ -120,6 +150,7 @@ echo -e "\nMounting $BUILDPATH/chroot\n"
 sleep 1
 mount --bind /dev chroot/dev
 
+sudo chroot chroot /opt/bowsk/bowsk-setup/buildbowsk/build-bowsk
 #Install software to create the ISO image
 echo -e "Installing syslinux squashfs-tools and genisoimage\n"
 sleep 1
