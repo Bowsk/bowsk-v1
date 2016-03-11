@@ -150,6 +150,9 @@ echo -e "\nMounting $BUILDPATH/chroot\n"
 sleep 1
 mount --bind /dev chroot/dev
 
+# Change root location tochroot folder
+	chmod 0755 /chroot/opt/bowsk/bowsk-setup/buildbowsk/build-bowsk
+
 sudo chroot chroot /opt/bowsk/bowsk-setup/buildbowsk/build-bowsk
 #Install software to create the ISO image
 echo -e "Installing syslinux squashfs-tools and genisoimage\n"
