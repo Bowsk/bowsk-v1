@@ -114,9 +114,9 @@ chmod 0755 /opt/bowsk/bowsk-setup/buildbowsk/buildbowsk
 echo "Running buildclient"
 sleep 4
 
-cd /opt/karoshi/clientsetup/buildclient
-chmod 0755 buildclient
-sudo ./buildclient
+cd /opt/bowsk/bowsk-setup/buildbowsk
+chmod 0755 build-bowsk
+sudo ./build-bowsk
 
 cd
 
