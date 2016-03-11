@@ -29,7 +29,7 @@ BOWSKVER=$BOWSKVER-$ARCH
 BOWSKVERNOCAPS=`echo $BOWSKVER | tr 'A-Z' 'a-z'`
 BUILDPATH=/home/bowsk-os/$BOWSKVERNOCAPS
 RELEASE=xenial
-BRANCH=bowsk
+BRANCH=master
 ZIPFILE=$BRANCH.zip
 
 echo -e "Bowsk remaster Utility\n"
