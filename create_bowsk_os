@@ -151,7 +151,7 @@ sleep 1
 mount --bind /dev chroot/dev
 
 # Change root location tochroot folder
-	chmod 0755 /chroot/opt/bowsk/bowsk-setup/buildbowsk/configure-chroot
+chmod 0755 chroot/opt/bowsk/bowsk-setup/buildbowsk/configure-chroot
 
 sudo chroot chroot /opt/bowsk/bowsk-setup/buildbowsk/configure-chroot
 #Install software to create the ISO image
