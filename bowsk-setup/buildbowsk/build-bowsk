@@ -3,7 +3,7 @@
 branch=master
 
 
-#Reboot the machine to auto log in to the karoshi user.
+#Reboot the machine to auto log in to the bowsk user.
 REBOOT=yes
 
 #Main list of packages to install (apart from samba4 and SOGo which are compiled).
@@ -85,7 +85,7 @@ getent passwd bowsk 1>/dev/null
 	sleep 1
 	useradd -d /opt/bowsk-user -s /bin/bash -m bowsk
 	#Set password to bowsk
-	echo -e "\nSetting bowsk user password to karoshi\n"
+	echo -e "\nSetting bowsk user password to bowsk\n"
 	sleep 1
 	echo -e "bowsk\nbowsk\n" | passwd bowsk
 
