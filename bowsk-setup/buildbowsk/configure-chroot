@@ -125,7 +125,7 @@ sleep 1
 apt-get install ubiquity-frontend-gtk
 
 #Add the ubuntu user for casper
-#echo -e "\nChroot: Creating karoshi user\n"
+#echo -e "\nChroot: Creating bowsk user\n"
 #sleep 1
 #useradd -u 999 -m -d /home/ubuntu ubuntu
 #read pause
